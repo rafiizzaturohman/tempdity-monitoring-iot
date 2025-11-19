@@ -1,0 +1,10 @@
+-- CreateTable
+CREATE TABLE "Dht22" (
+    "id" SERIAL NOT NULL,
+    "temperature" DOUBLE PRECISION NOT NULL,
+    "humidity" DOUBLE PRECISION NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL,
+
+    CONSTRAINT "Dht22_pkey" PRIMARY KEY ("id")
+);
