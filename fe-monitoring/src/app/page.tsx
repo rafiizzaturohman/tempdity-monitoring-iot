@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 
-export default function Dht22Page() {
+const Dht22Page = () => {
   const [sensor, setSensor] = useState<{
     temperature: number;
     humidity: number;
@@ -46,4 +46,6 @@ export default function Dht22Page() {
       )}
     </div>
   );
-}
+};
+
+export default Dht22Page;
