@@ -171,7 +171,7 @@ void loop() {
     HTTPClient http;
     WiFiClient client;
 
-    String url = "http://192.168.1.10:3002/sensor/update/";
+    String url = "http://YOURSERVERIP:3002/sensor/update/";
     url += String(temperature, 1) + "/" + String(humidity, 1);
 
     http.begin(client, url);
