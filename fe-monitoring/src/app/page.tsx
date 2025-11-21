@@ -8,7 +8,7 @@ const Dht22Page = () => {
     humidity: number;
   } | null>(null);
 
-  const fetchData = async () => {
+  const getData = async () => {
     try {
       // Panggil route yang sudah dibuat via fetch
       const res = await fetch("/api/sensor/");
@@ -21,10 +21,10 @@ const Dht22Page = () => {
   };
 
   useEffect(() => {
-    fetchData();
+    getData();
 
     // auto refresh setiap 3 detik
-    const interval = setInterval(fetchData, 3000);
+    const interval = setInterval(getData, 2000);
     return () => clearInterval(interval);
   }, []);
 
