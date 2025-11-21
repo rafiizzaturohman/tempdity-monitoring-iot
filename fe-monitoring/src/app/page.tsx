@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import SensorCard from "@/app/components/sensorCard";
+import ChartCard from "@/app/components/chartCard";
 
 const Dht22Page = () => {
   const [sensor, setSensor] = useState<{
@@ -61,13 +62,7 @@ const Dht22Page = () => {
         </main>
 
         {/* <!-- Chart Section --> */}
-        <section className="max-w-6xl mx-auto w-11/12 h-auto md:w-full md:h-auto bg-white/10 backdrop-blur-2xl border border-white/10 rounded-2xl shadow-[0_8px_25px_rgba(255,255,255,0.05)] hover:shadow-[0_14px_25px_rgba(249,248,246,0.5)] p-6 mt-4 mb-6 hover:scale-[1.02] transition-all duration-300">
-          <h2 className="text-center text-lg font-semibold tracking-wide text-gray-300 mb-4">
-            Real-time Sensor Chart
-          </h2>
-
-          <canvas id="sensorChart" height="100"></canvas>
-        </section>
+        <ChartCard />
 
         {/* <!-- Footer --> */}
         <footer className="text-center md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 py-3 text-gray-500 text-xs md:text-sm">
@@ -78,20 +73,4 @@ const Dht22Page = () => {
   );
 };
 
-// <div className="p-6">
-//   <h1 className="text-xl font-semibold mb-4">Sensor DHT22</h1>
-
-//   {sensor ? (
-//     <div className="space-y-2">
-//       <p>
-//         Temperature: <b>{sensor.temperature}°C</b>
-//       </p>
-//       <p>
-//         Humidity: <b>{sensor.humidity}%</b>
-//       </p>
-//     </div>
-//   ) : (
-//     <p>Loading...</p>
-//   )}
-// </div>
 export default Dht22Page;
