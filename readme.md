@@ -72,7 +72,7 @@ cd temperature-humidity-monitoring
 ## Instalasi
 
 ```bash
-cd backend
+cd be-monitoring
 npm install
 ```
 
@@ -128,7 +128,7 @@ Contoh payload:
 ## Instalasi
 
 ```bash
-cd frontend
+cd fe-monitoring
 npm install
 ```
 
