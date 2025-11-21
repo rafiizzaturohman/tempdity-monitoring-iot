@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import SensorCard from "@/app/components/sensorCard";
 import ChartCard from "@/app/components/chartCard";
+import Header from "@/app/components/header";
+import Footer from "@/app/components/footer";
 
 const Dht22Page = () => {
   const [sensor, setSensor] = useState<{
@@ -32,13 +34,7 @@ const Dht22Page = () => {
     <div className="bg-linear-to-br from-gray-800 via-gray-900 to-black h-screen">
       <div className="text-white max-h-screen flex flex-col">
         {/* <!-- Header --> */}
-        <header className="bg-white/10 backdrop-blur-md shadow-md py-4 text-center border-b border-white/10">
-          <h1 className="text-3xl font-bold tracking-widest text-[#1E90FF] text-shadow-sm text-shadow-[#00bfff80] font-sans">
-            AIRIQ
-          </h1>
-
-          <p className="text-sm text-gray-300 mt-1">DHT22 Sensor Monitoring</p>
-        </header>
+        <Header />
 
         {/* <!-- Card Section --> */}
         <main className="flex-1 flex flex-col md:flex-row gap-6 justify-center items-stretch p-6 max-w-6xl mx-auto w-full">
@@ -47,8 +43,7 @@ const Dht22Page = () => {
             title="Temperature"
             value={sensor?.temperature ?? null}
             unit="°C"
-            icon="bi-thermometer-half"
-            color="text-red-400"
+            variant="temperature"
           />
 
           {/* <!-- Humidity Card --> */}
@@ -56,8 +51,7 @@ const Dht22Page = () => {
             title="Humidity"
             value={sensor?.humidity ?? null}
             unit="%"
-            icon="bi-droplet"
-            color="text-sky-400"
+            variant="humidity"
           />
         </main>
 
@@ -65,9 +59,7 @@ const Dht22Page = () => {
         <ChartCard />
 
         {/* <!-- Footer --> */}
-        <footer className="text-center md:absolute md:bottom-0 md:left-1/2 md:-translate-x-1/2 py-3 text-gray-500 text-xs md:text-sm">
-          <p>© 2025 AIRIQ | Real-time DHT22 Sensor Data</p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
