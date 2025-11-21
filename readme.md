@@ -169,14 +169,25 @@ void loop() {
 
   if (!isnan(t) && !isnan(h)) {
     HTTPClient http;
-    http.begin("http://YOUR_SERVER_IP:3002/sensor");
-    http.addHeader("Content-Type", "application/json");
+    WiFiClient client;
 
-    String json = "{\"temperature\":" + String(t) + ",\"humidity\":" + String(h) + "}";
-    http.POST(json);
+    String url = "http://192.168.1.10:3002/sensor/update/";
+    url += String(temperature, 1) + "/" + String(humidity, 1);
 
-    http.end();
-  }
+    http.begin(client, url);
+
+
+    if (httpCode > 0) {
+      Serial.printf("HTTP Response Code: %d\n", httpCode);
+      // Print ini + code yang nandain sukses atau nggak (200 = sukses)
+      String payload = http.getString(); // Ngambil respons dari httpCode
+      Serial.println("Response: ");
+      Serial.println(payload);
+    } else {
+      Serial.printf("Gagal mengirim data. Error: %s\n", http.errorToString(httpCode).c_str());
+    }
+      http.end();
+    }
 
   delay(3000);
 }
