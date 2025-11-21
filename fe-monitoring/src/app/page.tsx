@@ -10,7 +10,6 @@ const Dht22Page = () => {
 
   const getData = async () => {
     try {
-      // Panggil route yang sudah dibuat via fetch
       const res = await fetch("/api/sensor/");
       const data = await res.json();
 
@@ -23,7 +22,6 @@ const Dht22Page = () => {
   useEffect(() => {
     getData();
 
-    // auto refresh setiap 3 detik
     const interval = setInterval(getData, 2000);
     return () => clearInterval(interval);
   }, []);
