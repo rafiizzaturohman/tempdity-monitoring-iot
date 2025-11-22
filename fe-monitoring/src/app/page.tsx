@@ -26,7 +26,7 @@ const Dht22Page = () => {
   useEffect(() => {
     getData();
 
-    const interval = setInterval(getData, 2000);
+    const interval = setInterval(getData, 500);
     return () => clearInterval(interval);
   }, []);
 
@@ -37,7 +37,7 @@ const Dht22Page = () => {
         <Header />
 
         {/* <!-- Card Section --> */}
-        <main className="flex-1 flex flex-col md:flex-row gap-6 justify-center items-stretch p-6 max-w-6xl mx-auto w-full">
+        <main className="flex-1 flex flex-col md:flex-row gap-6 justify-center items-stretch p-6 max-w-300 mx-auto w-full">
           {/* <!-- Temperature Card --> */}
           <SensorCard
             title="Temperature"
