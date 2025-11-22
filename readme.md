@@ -2,7 +2,7 @@
 
 Monitoring Suhu & Kelembapan Realtime Menggunakan DHT22, NestJS & NextJS
 
-Aplikasi ini adalah sistem monitoring suhu (°C) dan kelembapan (%) secara realtime menggunakan sensor **DHT22**. Data dari sensor dikirim melalui mikrokontroler (ESP8266/ESP32/Arduino) menuju **backend NestJS**, lalu ditampilkan melalui **dashboard NextJS**.
+Aplikasi ini adalah sistem monitoring suhu (°C) dan kelembapan (%) secara realtime menggunakan sensor **DHT22**. Data dari sensor dikirim melalui mikrokontroler (ESP8266) menuju **backend NestJS**, lalu ditampilkan melalui **dashboard NextJS**.
 
 ---
 
@@ -12,7 +12,7 @@ Aplikasi ini adalah sistem monitoring suhu (°C) dan kelembapan (%) secara realt
 
 - REST API untuk menerima dan mengirim data sensor
 - Endpoint:
-  - `POST /sensor` → menerima suhu & kelembapan dari mikrokontroler
+  - `PUT /sensor/update` → menerima suhu & kelembapan dari mikrokontroler
   - `GET /sensor` → mengirim data sensor terbaru ke frontend
 - Menggunakan Controller, Service, DTO
 - Validasi data dan CORS enable
@@ -25,7 +25,6 @@ Aplikasi ini adalah sistem monitoring suhu (°C) dan kelembapan (%) secara realt
 - Grafik perubahan data
 - Auto-refresh data
 - Responsive UI
-- Glassmorphism + dark mode (opsional)
 
 ### 🔧 Hardware
 
