@@ -107,7 +107,7 @@ Contoh response:
 
 ---
 
-### POST /sensor
+### POST /sensor/update
 
 Digunakan mikrokontroler untuk mengirim data.
 
