@@ -14,9 +14,18 @@ datasource db {
 }
 
 model Dht22 {
-  id          Int      @id @default(autoincrement())
-  temperature Float
-  humidity    Float
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id              Int      @id @default(autoincrement())
+
+  temperature     Float
+  min_temperature Float?   // nullable sementara
+  max_temperature Float?   // nullable sementara
+
+  humidity        Float
+  min_humidity    Float?   // nullable sementara
+  max_humidity    Float?   // nullable sementara
+
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("Dht22")
 }
