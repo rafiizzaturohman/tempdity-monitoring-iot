@@ -5,60 +5,78 @@ import SensorCard from "@/app/components/sensorCard";
 import ChartCard from "@/app/components/chartCard";
 import Header from "@/app/components/header";
 import Footer from "@/app/components/footer";
+import LimitForm from "@/app/components/limitForm";
+import MinMaxCardSection from "@/app/components/minMaxTemp";
 
 const Dht22Page = () => {
   const [sensor, setSensor] = useState<{
     temperature: number;
     humidity: number;
+    max_temperature?: number;
+    min_temperature?: number;
+    max_humidity?: number;
+    min_humidity?: number;
   } | null>(null);
 
-  const getData = async () => {
-    try {
-      const res = await fetch("/api/sensor/");
-      const data = await res.json();
-
-      setSensor(data);
-    } catch (error) {
-      console.error("Error fetching:", error);
-    }
-  };
-
+  // Fetch sensor + limit
   useEffect(() => {
-    getData();
+    const fetchAll = async () => {
+      try {
+        const res = await fetch("/api/sensor/");
+        const data = await res.json();
 
-    const interval = setInterval(getData, 500);
+        setSensor(data);
+      } catch (e) {
+        console.error("Error fetching:", e);
+      }
+    };
+
+    fetchAll();
+    const interval = setInterval(fetchAll, 500);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="bg-linear-to-br from-gray-800 via-gray-900 to-black h-screen">
       <div className="text-white max-h-screen flex flex-col">
-        {/* <!-- Header --> */}
         <Header />
 
-        {/* <!-- Card Section --> */}
         <main className="flex-1 flex flex-col md:flex-row gap-6 justify-center items-stretch p-6 max-w-300 mx-auto w-full">
-          {/* <!-- Temperature Card --> */}
+          {/* Temperature Card */}
           <SensorCard
             title="Temperature"
             value={sensor?.temperature ?? null}
             unit="°C"
             variant="temperature"
+            max={sensor?.max_temperature ?? null}
+            min={sensor?.min_temperature ?? null}
           />
 
-          {/* <!-- Humidity Card --> */}
+          {/* Humidity Card */}
           <SensorCard
             title="Humidity"
             value={sensor?.humidity ?? null}
             unit="%"
             variant="humidity"
+            max={sensor?.max_humidity ?? null}
+            min={sensor?.min_humidity ?? null}
           />
         </main>
 
-        {/* <!-- Chart Section --> */}
-        <ChartCard />
+        <MinMaxCardSection
+          minTemp={sensor?.min_temperature ?? null}
+          maxTemp={sensor?.max_temperature ?? null}
+          minHumi={sensor?.min_humidity ?? null}
+          maxHumi={sensor?.max_humidity ?? null}
+        />
 
-        {/* <!-- Footer --> */}
+        <LimitForm />
+
+        <ChartCard
+          temperature={sensor?.temperature ?? null}
+          humidity={sensor?.humidity ?? null}
+        />
+
         <Footer />
       </div>
     </div>
