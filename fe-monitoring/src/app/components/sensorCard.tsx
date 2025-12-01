@@ -22,7 +22,6 @@ const styles = {
   },
 };
 
-// Mapping warna untuk Tailwind (hindari class dinamis)
 const colorMap = {
   red: {
     text: "text-red-300",
@@ -58,18 +57,14 @@ const SensorCard = ({
 
   // ==== LOGIC NOTIFIKASI ====
   let notifText = "";
-  // notifColorKey is the key for colorMap
   let notifColorKey: keyof typeof colorMap = "gray";
 
-  // Narrow value safely
   if (value === null || typeof value !== "number") {
     notifText = "Menunggu data...";
     notifColorKey = "gray";
   } else {
-    // value is definitely a number here
     const val = value;
 
-    // If max/min are provided, use them. Otherwise fall back to static thresholds
     if (typeof max === "number" && val > max) {
       notifText =
         variant === "temperature"
@@ -83,7 +78,6 @@ const SensorCard = ({
           : "⚠️ Kelembapan di bawah batas!";
       notifColorKey = "blue";
     } else {
-      // Jika max/min tidak diberikan, gunakan threshold statis (sesuai request sebelumnya)
       if (variant === "temperature") {
         if (val >= 30) {
           notifText = "⚠️ Suhu udara terlalu panas";
@@ -96,7 +90,6 @@ const SensorCard = ({
           notifColorKey = "green";
         }
       } else {
-        // humidity
         if (val >= 65) {
           notifText = "⚠️ Kelembapan diatas batas normal";
           notifColorKey = "red";
