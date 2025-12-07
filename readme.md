@@ -61,7 +61,7 @@ Aplikasi ini adalah sistem monitoring suhu (°C) dan kelembapan (%) secara realt
 
 ```bash
 git clone https://github.com/username/temperature-humidity-monitoring.git
-cd temperature-humidity-monitoring
+cd tempdity-monitoring-iot
 ```
 
 ---
